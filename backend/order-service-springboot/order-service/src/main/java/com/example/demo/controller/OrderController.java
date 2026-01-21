@@ -5,10 +5,18 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
+import com.example.demo.service.OrderService;
+
+import lombok.RequiredArgsConstructor;
+
+
 @RestController
 @RequestMapping("/orders")
+@RequiredArgsConstructor
 public class OrderController {
 
+	private final OrderService orderService;
+	
     @GetMapping("/public")
     public ResponseEntity<String> publicEndpoint() {
         return ResponseEntity.ok("Public order info");
