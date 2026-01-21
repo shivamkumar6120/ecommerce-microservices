@@ -34,4 +34,9 @@ public class AuthController {
         return ResponseEntity.ok(authService.login(request));
     }
     
+    @GetMapping("/me")
+    public ResponseEntity<?>  me() {
+    	return ResponseEntity.ok("you are authenticated");
+    }
+    
 }
