@@ -21,4 +21,19 @@ public class OrderController {
 
         return ResponseEntity.ok("Orders for user: " + userEmail);
     }
+    
+    @PostMapping("/place")
+    public ResponseEntity<String> placeOrder(
+            @RequestHeader("Authorization") String authHeader,
+            Authentication authentication) {
+
+        String token = authHeader.substring(7);
+        String userEmail = authentication.getName();
+
+        return ResponseEntity.ok(
+                orderService.placeOrder(token, userEmail)
+        );
+    }
+
+    
 }
